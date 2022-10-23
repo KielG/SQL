@@ -1,3 +1,5 @@
+#1 You should have a table for all the items in your store, and at least 5 columns for the kind of data you think you'd need to store. You should sell at least 15 items, and use select statements to order your items by price and show at least one statistic about the items.
+
 CREATE TABLE CLOTHING (ID INTEGER PRIMARY KEY, SEX TEXT, SIZE TEXT, NAME TEXT, AISLE TEXT, COST INTEGER);
 
 INSERT INTO CLOTHING VALUES 
