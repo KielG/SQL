@@ -1,9 +1,0 @@
-#1 Create a table to store your list of books. It should have columns for id, name, and rating.
-
-CREATE TABLE BOOKS (Id integer primary key, name text, rating integer);
-
-INSERT INTO BOOKS values (1, "Genghis Khan", 100);
-INSERT INTO BOOKS values (2, "Options trader", 100);
-INSERT INTO BOOKS values (3, "SQL advance", 100);
-
-SELECT * FROM BOOKS;
