@@ -1,0 +1,31 @@
+--Create a clothing store database
+
+CREATE TABLE CLOTHING (ID INTEGER PRIMARY KEY, SEX TEXT, SIZE TEXT, NAME TEXT, AISLE INTEGER, PRICE INTEGER);
+
+INSERT INTO CLOTHING VALUES 
+(1, "M", "L", "POLO", 10, 20.00),
+(2, "F", "S", "CROP TOP",4, 30.00),
+(3, "M", "XL", "T-SHIRT", 10, 15.00),
+(4, "F", "XS", "THONG", 3, 10.00),
+(5, "M", "XXL", "WINTER JACKET", 15, 60.00),
+(6, "M", "M", "BOXER BRIEFS", 9, 15.00),
+(7, "F", "XL", "LEVI PANTS", 5, 40.00),
+(8, "M", "L", "LEVI PANTS", 5, 40.00),
+(9, "F", "DD", "BRA", 3, 10.00),
+(10, "F", "A", "BRA", 3, 10.00),
+(11, "M", "S", "BOXER BRIEFS", 9, 15.00),
+(12, "M", "XXL", "LEVI PANTS", 5, 40.00),
+(13, "F", "XS", "LEVI PANTS", 5, 40.00),
+(14, "F", "S", "THONG", 3, 10.00),
+(15, "M", "XL", "T-SHIRT", 10, 15.00);
+
+--Display the database ordered by price.
+SELECT * FROM CLOTHING ORDER BY PRICE ASC;
+
+--What is the avg price of items in the Mens Shirt Aisle? 
+SELECT AVG(price) "avg mens shirt price"
+FROM CLOTHING
+where Aisle='10';
+
+--What are the most 5 popular items?
+SELECT NAME, COUNT(*) FROM CLOTHING GROUP BY NAME ORDER BY COUNT(*) desc LIMIT 5;
