@@ -1,0 +1,23 @@
+CREATE TABLE CLOTHING (ID INTEGER PRIMARY KEY, SEX TEXT, SIZE TEXT, NAME TEXT, AISLE TEXT, COST INTEGER);
+
+INSERT INTO CLOTHING VALUES 
+(1, "M", "L", "POLO", 10, 20),
+(2, "F", "S", "CROP TOP",4, 30),
+(3, "M", "XL", "T-SHIRT", 10, 15),
+(4, "F", "XS", "THONG", 3, 10),
+(5, "M", "XXL", "WINTER JACKET", 15, 60),
+(6, "M", "M", "BOXER BRIEFS", 9, 12),
+(7, "F", "XL", "LEVI PANTS", 5, 40),
+(8, "M", "L", "LEVI PANTS", 20, 30),
+(9, "F", "DD", "BRA", 20, 1),
+(10, "F", "A", "BRA", 20, 1),
+(11, "M", "S", "BOXER BRIEFS", 20, 15),
+(12, "M", "XXL", "LEVI PANTS", 7, 35),
+(13, "F", "XS", "LEVI PANTS", 6, 40),
+(14, "F", "S", "THONG", 1, 30),
+(15, "M", "XL", "T-SHIRT", 5, 30);
+
+SELECT * FROM CLOTHING;
+
+SELECT ID, SEX, COST FROM CLOTHING ORDER BY COST;  
+
