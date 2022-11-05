@@ -216,10 +216,10 @@ INSERT INTO picks (pick_number, name, college, picked_by, position)
     GROUP BY position 
     ORDER BY Total DESC;
     
-    --What skill position went in the TOP 10?
+    --What offensive skill position went in the TOP 10?
     SELECT position, COUNT(*) AS "Top_10" 
     FROM picks 
-    WHERE position IN ("QB","DE", "WR", "OT", "WR", "OLB","RB","CB","DT","TE", "ILB", "OG","C","S") 
+    WHERE position IN ("QB","WR", "OT", "WR", "RB","TE", "OG","C")
     AND id <= 10 
     GROUP BY position 
     ORDER BY Top_10 DESC;
