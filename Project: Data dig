@@ -211,8 +211,7 @@ INSERT INTO picks (pick_number, name, college, picked_by, position)
     
     --How many draft picks are in each skilled position? 
     SELECT position, COUNT(*) AS "Total" 
-    FROM picks 
-    WHERE position IN ("QB","DE", "WR", "OT", "WR", "OLB","RB","CB","DT","TE", "ILB", "OG","C","S") 
+    FROM picks
     GROUP BY position 
     ORDER BY Total DESC;
     
