@@ -261,8 +261,8 @@ INSERT INTO picks (pick_number, name, college, picked_by, position)
    END as 'Draft Pick'
    FROM picks; 
    
-  --Break down how many players went in each draft round.  
-  SELECT COUNT(*) AS Total,
+   --Break down how many players went in each draft round.  
+   SELECT COUNT(*) AS Total,
    CASE
    WHEN Pick_number <= 32 then 'First Round Draft Pick'
    WHEN Pick_number <= 64 then 'Second Round Draft Pick'
@@ -275,12 +275,12 @@ INSERT INTO picks (pick_number, name, college, picked_by, position)
    ORDER BY Total DESC; 
    
    --What CB went in the top 5? 
-    SELECT id, name, position 
-    FROM picks 
-    GROUP BY name 
-    HAVING position = "CB" 
-    ORDER BY id ASC 
-    LIMIT 5;
+   SELECT id, name, position 
+   FROM picks 
+   GROUP BY name 
+   HAVING position = "CB" 
+   ORDER BY id ASC 
+   LIMIT 5;
 
    --What is the NFL teams MIN, MAX, AVG pick numbers?
    SELECT picked_by, MIN(pick_number) AS NFL_MIN_PICK 
