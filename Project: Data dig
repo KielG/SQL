@@ -281,3 +281,19 @@ INSERT INTO picks (pick_number, name, college, picked_by, position)
     HAVING position = "CB" 
     ORDER BY id ASC 
     LIMIT 5;
+
+   --What is the NFL teams MIN, MAX, AVG pick numbers?
+   SELECT picked_by, MIN(pick_number) AS NFL_MIN_PICK 
+   FROM picks 
+   GROUP BY picked_by 
+   ORDER BY "NFL_MIN_PICK" ASC;
+ 
+   SELECT picked_by, MAX(pick_number) AS NFL_MAX_PICK 
+   FROM picks 
+   GROUP BY picked_by 
+   ORDER BY "NFL_MAX_PICK" ASC;
+ 
+   SELECT picked_by, AVG(pick_number) AS NFL_AVG_PICK 
+   FROM picks 
+   GROUP BY picked_by 
+   ORDER BY "NFL_AVG_PICK" ASC;
