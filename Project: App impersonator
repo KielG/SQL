@@ -1,0 +1,24 @@
+CREATE TABLE Mint_Mobile (id integer primary key autoincrement, name1 text, name2 text, data_used real, max_data real );
+
+INSERT INTO Mint_Mobile (name1, name2, data_used, max_data) VALUES
+('Kiel Green', 'Geana Green', 20, 40),
+('Garren Green', 'Rachel Green', 10, 15),
+('Mark Green', 'Charissa Green', 50, 50);
+
+--Pull chart data.
+SELECT * FROM Mint_Mobile;
+
+--Update data in the app.
+UPDATE Mint_Mobile SET data_used = 15 WHERE name1 = 'Garren Green';
+UPDATE Mint_Mobile SET max_data =50 WHERE name2= 'Rachel Green';
+UPDATE Mint_Mobile SET name1 = 'Garren Greenle' WHERE id = 2;
+UPDATE Mint_Mobile SET name2 = 'Rachel Greenle' WHERE id =2;
+
+--Pull chart data to see the updated data.
+SELECT * FROM Mint_Mobile;
+
+--Delete users data from row 2.
+DELETE FROM Mint_Mobile WHERE id = 2;
+
+--Pull chart data to check row 2 user data was deleted. 
+SELECT * FROM Mint_Mobile;
