@@ -1,0 +1,61 @@
+In SQLlite I downloaded and connected to the database BIT_DB for this project. This database holds customer purchase orders and the months for those orders. 
+
+To find out the data we are working with.
+SELECT * 
+FROM customers c
+JOIN Jansales j
+ON c.order_ID=j.orderID
+LIMIT 20;
+
+#1. How many orders were placed in January?
+SELECT COUNT(orderID)
+FROM JanSales
+WHERE length(orderid) = 6
+AND orderid <> 'Order ID';
+
+#2. How many of those orders were for an iPhone? 
+SELECT COUNT(orderid)
+FROM JanSales
+WHERE Product='iPhone'
+AND length(orderid) = 6 
+AND orderid <> 'Order ID';
+
+#3. Select the customer account numbers for all the orders that were placed in February. 
+SELECT DISTINCT acctnum
+FROM customers C
+INNER JOIN FebSales F
+ON C.order_id=F.orderid
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID';
+
+#4. Which product was the cheapest one sold in January, and what was the price?
+SELECT DISTINCT Product, price
+FROM JanSales
+WHERE  price IN (SELECT MIN(price) FROM JanSales);
+
+
+#5. What is the total revenue for each product sold in January?
+SELECT SUM(quantity)*price AS revenue
+,product
+FROM JanSales
+GROUP BY product;
+
+#6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+SELECT 
+SUM(Quantity), 
+product, 
+SUM(quantity)*price AS revenue
+FROM FebSales 
+WHERE location = '548 Lincoln St, Seattle, WA 98101'
+GROUP BY product;
+
+#7. How many customers ordered more than 2 products at a time, and what was the average amount spent for those customers? 
+SELECT 
+COUNT(DISTINCT C.acctnum), 
+AVG(quantity*price)
+FROM FebSales F
+LEFT OUTER JOIN customers c
+ON F.orderid=c.order_id
+WHERE F.Quantity>2
+AND length(orderid) = 6 
+AND orderid <> 'Order ID';
