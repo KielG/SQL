@@ -61,3 +61,17 @@ FROM BIT_DB.Spotifydata
 WHERE speechiness IN (SELECT speechiness FROM BIT_DB.Spotifydata)
 ORDER BY speechiness DESC
 LIMIT 10;
+
+#6. Calculate the average popularity for the artists in the Spotify data table. 
+Then, for every artist with an average popularity of 90 or above, 
+show their name, their average popularity, and label them as a “Top Star”.
+
+WITH temptable_CTE AS
+(SELECT AVG(popularity) AS average_popularity, artist_name
+FROM Spotifydata 
+GROUP BY artist_name)
+
+SELECT average_popularity, artist_name, 'Top Star' AS Label
+FROM temptable_CTE
+WHERE average_popularity>=90
+ORDER BY average_popularity DESC;
