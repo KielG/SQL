@@ -1,0 +1,52 @@
+1#. USA customer's contact info for special offers.
+SELECT lastname, firstname, phone, fax, email, address, city, state, country, postalcode
+FROM chinook.customers
+WHERE COUNTRY IS 'USA'
+ORDER BY Lastname ASC;
+
+2#. Customer invoices for company's name starting with A.
+SELECT c.Company, i.*  
+FROM chinook.customers c
+INNER JOIN chinook.invoices i
+WHERE c.Company LIKE 'A%';
+
+3#. Show employee management tree
+SELECT HireDate, LastName, FirstName, Title, Phone, Email, 
+CASE
+    WHEN ReportsTo = 1 THEN 'Adams, Andrew'
+    WHEN ReportsTo = 2 THEN 'Edwards, Nancy'
+    ELSE 'Mitchell, Michael'
+    END Supervisor 
+FROM chinook.employees
+GROUP BY HireDate
+ORDER BY LastName ASC;
+
+4#. Top 10 Songs showing title, composer,  and genres.
+SELECT t.Name AS Song, t.Composer, g.Name AS Genre
+FROM chinook.tracks t
+INNER JOIN chinook.genres g ON g.genreid = t.genreid
+LIMIT 10;
+
+5.# Top 5 playlists.
+SELECT Name
+FROM chinook.playlists
+LIMIT 5;
+
+6#. Albums only bought in the USA.
+SELECT a.Title, c.Country, c.Lastname
+FROM chinook.albums a
+LEFT JOIN chinook.customers c ON a.albumid = c.customerid
+WHERE Country IS 'USA'
+GROUP BY c.Lastname;
+
+7#. Top 3 playlists showing album, song, artist, genre.
+SELECT p.Name AS Playlist, a.Title AS Album, t.Name AS Song, ar.Name AS Artist, g.Name AS Genre
+FROM chinook.playlists p
+JOIN chinook.playlist_track pt ON p.playlistid = pt.playlistid
+JOIN chinook.tracks t ON pt.trackid = t.trackid
+JOIN chinook.genres g ON t.genreid = g.genreid
+JOIN chinook.albums a ON t.albumid = a.albumid
+JOIN chinook.artists ar ON a.artistid = ar.artistid
+GROUP BY p.Name
+ORDER BY p.Name ASC
+LIMIT 3;
